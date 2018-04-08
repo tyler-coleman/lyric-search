@@ -22,23 +22,21 @@
     hashfunc.h		- Interface for given hash function.
     hashfunc.cpp	- Implementation of hash function.
 
-3.  Use included makefile.
+3.  Use included makefile by typing command "make" at command line.
+    To run this program with the included sample .txt file, type 
+    "./songsearch rick_db.txt" at the command line.
 
-4.  Hash table - resizable array.
+    The program will then read in and organize the lyrics contained in the
+    file, but will not provide any prompting to the user when ready.
+    Simply type the desired word to search for and hit enter.
 
-    The hash table is an array of structs, inside each of which exists another
-    array of the top 10 songs for a given word's frequency. The indeces of the
-    array correspond to the hash values of various words. When two words hash
-    to the same value, the newest word to be entered probes linearly to the
-    next open index.
+    The program will then print out the top 10 songs in which the specified
+    word occurs most frequently, along with the context of those songs in
+    which the word appears.
 
-    Song class
+    Type "BREAK" and hit enter to exit the program.
 
-    The song class contains a string vector that represents the song's lyrics.
-    The hash table class itself contains a vector of song class instances so
-    that it has easy access to all of the songs' lyrics.
-
-5.  First, the vector of song class instances was built one at a time. Data
+4.  First, the vector of song class instances was built one at a time. Data
     was read in from the database file and appropriately filed into the
     relevant variables in a given song class instance. Instances were pushed
     onto the back of the vector to be later manipulated.
