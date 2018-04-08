@@ -1,0 +1,63 @@
+songsearch_design.txt
+Tyler Coleman
+
+An outline of the methods and data structures that will be
+used to facilitate the searching for lyrics within songs.
+
+Song class:
+
+The song class will at its core include a string vector of all
+the song's lyrics in order, its title saved as a string, and
+a function that searches for specific word occurrences and prints
+the previous 5 words, the word searched for, and then the next
+5 words. This is done by finding the index within the vector of words
+at which a desired word occurs, then simply using a for loop that starts
+printing at [index - 5] and stops printing at [index + 5].
+
+Vector of Song classes:
+
+A vector array of song classes will be used to store the data for every song
+in the database file.
+
+Word_occurrence struct:
+
+The Word_occurrence struct contains the name of a song in which a
+word occurs and the number of times the word occurs within the song.
+The word itself does not need to be included.
+
+Hash table:
+
+A hash table will be created with a lenghth of roughly 550k-600k
+in which all elements are initialized as null pointers. Words are
+read in from the string vector in each song class and hashed into
+the table. When attempting to hash a word into an empty slot in
+the table, an 11-element array of Word_occurrence structs is generated 
+that that index will then point to. When more occurrences of a
+specific word are found, the array at the appropriate hash table index
+is searched for a Word_occurrence struct that has the same song name
+element. If found, the structs word occurrence counter is incremented.
+If not found, a new struct takes the place of the Word_occurence array's
+11th index. The rest of the song is read in and this struct is incremented
+as appropriate. When done reading in a song, the corresponding struct's
+word count is compared to all others in the 11-element array of Word_occurence
+structs. If its count is less than all others in the array, the new struct
+is discarded and life goes on. However, if the newly generated Word_occurence
+struct has a word counter higher than the array's struct with the minimum
+word count, a function is called that reorders the 11-element array such that
+the first element is the struct with the highest word count and the last is
+the one with the least. In doing this, a sorted list is maintained at each
+hash table index that lists the songs in which a hashed word occurs in order
+of correct rank.
+
+When hashing two different words creates a collision, the next element of the
+hash table is simply checked for availability until a free slot is found.
+
+After every lyric from every song has been appropriately entered into the hash
+table, the program is ready for user input. The user's input is hashed, and the
+corresponding element of the hash table is accessed. At this index already
+exists the ordered list of songs with their corresponding word count included.
+A function is called on the song title of each struct that finds that song
+title in the vector of Song classes, then searches the found Song class's
+vector of lyrics for the occurrences of the desired lyric, and prints the
+preceding and succeeding 5 lyrics for each occurence (as outlined in Song
+class section).
