@@ -59,6 +59,3 @@
     vector of song class instances for the specific song, finding the given
     word in the song's vector of lyrics, and printing the previous 5 and next
     5 words.
-
-6.  Frankie helped me with some coding stuff
-    Worked with Mike Jacobson and Luke Machamer to come up with design.
