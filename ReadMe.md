@@ -1,4 +1,3 @@
-# ReadMe for COMP 15 HW6
 ## Song Search 
 
 1.  The purpose of this program is to allow the searching of a large database
